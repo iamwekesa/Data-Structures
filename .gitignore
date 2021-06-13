@@ -1,7 +1,16 @@
 
 .DS_Store
-obj/
-bin/
+[Dd]ebug/
+[Rr]elease/
+build/
+[Bb]in/
+[Oo]bj/
 
 # Visual Studio Code
 .vscode
+
+
+DebugLog.*
+*.orig
+*.log
+log.txt
