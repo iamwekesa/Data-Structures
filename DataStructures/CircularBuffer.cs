@@ -20,7 +20,7 @@ namespace DataStructures
         //Overloaded constuctor with option of passing capacity
         public CircularBuffer(int capacity)
         {
-            _buffer = new double[capacity];
+            _buffer = new double[capacity + 1];
             _start = 0;
             _end = 0;
 
@@ -31,6 +31,10 @@ namespace DataStructures
             _buffer[_end] = value;
             _end = (_end + 1) % _buffer.Length;
 
+            if (_end == _start)
+            {
+                _start = (_start + 1) % _buffer.Length;
+            }
         }
         // Read last unread data
         public double Read()
@@ -39,15 +43,20 @@ namespace DataStructures
             _start = (_start + 1) % _buffer.Length;
             return value;
         }
-
-        public bool IsEmpty()
+        // Capacity of the buffer
+        public int Capacity
         {
-            return _end == _start;
+            get { return _buffer.Length; }
         }
-        //public bool IsFull()
-        //{
-        //    return ()
-        //}
+        public bool IsEmpty
+        {
+            get { return _end == _start; }
+        }
+        // Check if Buufere has been fully writen on
+        public bool IsFull
+        {
+            get { return (_end + 1) % _buffer.Length == _start; }
+        }
 
     }
 }
