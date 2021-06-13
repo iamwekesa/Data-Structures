@@ -8,15 +8,35 @@ namespace DataStructures
         {
 
             var buffer = new CircularBuffer<double>(capacity: 3);
-            var values = new[] { 1.0, 2.0, 3.0, 4.0, 5.0 };
+            ProcessBuffer(buffer);
+            ProcessInput(buffer);
 
-            foreach (var value in values)
-            {
-                buffer.Write(value);
-            }
+
+        }
+        private static void ProcessBuffer(CircularBuffer<double> buffer)
+        {
+            var sum = 0.0;
+            Console.WriteLine("Buffer: ");
             while (!buffer.IsEmpty)
             {
-                Console.WriteLine(buffer.Read());
+                sum += buffer.Read();
+            }
+            Console.WriteLine(sum);
+        }
+
+        private static void ProcessInput(CircularBuffer<double> buffer)
+        {
+            while (true)
+            {
+                var value = 0.0;
+                var input = Console.ReadLine();
+
+                if (double.TryParse(input, out value))
+                {
+                    buffer.Write(value);
+                    continue;
+                }
+                break;
             }
         }
     }
