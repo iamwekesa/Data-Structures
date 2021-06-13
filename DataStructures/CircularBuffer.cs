@@ -3,10 +3,10 @@ using System.Net.Http;
 
 namespace DataStructures
 {
-    public class CircularBuffer
+    public class CircularBuffer<T>
     {
         //Buffer Array
-        double[] _buffer;
+        T[] _buffer;
 
         //Header Pointers
         int _start;
@@ -20,13 +20,13 @@ namespace DataStructures
         //Overloaded constuctor with option of passing capacity
         public CircularBuffer(int capacity)
         {
-            _buffer = new double[capacity + 1];
+            _buffer = new T[capacity + 1];
             _start = 0;
             _end = 0;
 
         }
         // Write to 'end' index of the buffer
-        public void Write(double value)
+        public void Write(T value)
         {
             _buffer[_end] = value;
             _end = (_end + 1) % _buffer.Length;
@@ -37,7 +37,7 @@ namespace DataStructures
             }
         }
         // Read last unread data
-        public double Read()
+        public T Read()
         {
             var value = _buffer[_start];
             _start = (_start + 1) % _buffer.Length;

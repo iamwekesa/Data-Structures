@@ -9,13 +9,13 @@ namespace DataStructures.Test
         [Fact]
         public void New_Buffer_Is_Empty()
         {
-            var buffer = new CircularBuffer();
+            var buffer = new CircularBuffer<double>();
             Assert.True(buffer.IsEmpty);
         }
         [Fact]
         public void First_In_First_Out_When_Not_Full()
         {
-            var buffer = new CircularBuffer(capacity: 3);
+            var buffer = new CircularBuffer<double>(capacity: 3);
             var value1 = 1.1;
             var value2 = 2.0;
 
@@ -29,7 +29,7 @@ namespace DataStructures.Test
         [Fact]
         public void Three_Element_Buffer_Is_Full_After_Three_Writes()
         {
-            var buffer = new CircularBuffer(capacity: 3);
+            var buffer = new CircularBuffer<double>(capacity: 3);
             buffer.Write(1);
             buffer.Write(1);
             buffer.Write(1);
@@ -38,7 +38,7 @@ namespace DataStructures.Test
         [Fact]
         public void Overwrites_When_More_Than_Capacity()
         {
-            var buffer = new CircularBuffer(capacity: 3);
+            var buffer = new CircularBuffer<double>(capacity: 3);
             var values = new[] { 1.0, 2.0, 3.0, 4.0, 5.0 };
 
             foreach (var value in values)
