@@ -1,9 +1,10 @@
 using System;
 using System.Net.Http;
+using DataStructures.Buffers;
 
 namespace DataStructures
 {
-    public class CircularBuffer<T>
+    public class CircularBuffer<T> : IBuffer<T>
     {
         //Buffer Array
         T[] _buffer;
